@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <section class="header">
+        <h1 class="header__logo">New Order Request from Crunchee Munchies</h1>
+    </section>
+    <section class="message">
+        <h2 class="header__message">Thank you {body.firstName} for requesting an order! We have your request and will
+            contact you soon!</h2>
+    </section>
+    <section class="order">
+        <h3 class="order__header">Your order:</h3>
+        <div class="order__box">
+            <h4 class="order__box-header">On {body.date}, you ordered:</h4>
+            <ul class="order__box-orders">
+                <li class="order__box-orders--item">
+                    <h4 class="order__box-orders--item---header">{order.name}</h4>
+                    <p class="order__box-orders--item---description">{order.description}</p>
+                </li>
+            </ul>
+            <h3 class="order__total">Total Price : {order.totalCost}</h3>
+        </div>
+    </section>
+    <section class="notes">
+        <h4 class="notes__header">Notes</h3>
+            <p class="notes__message">body.message</p>
+    </section>
+    <section class="footer">
+        <h3 class="footer__header">Thank you for ordering form Crunchee Munchies</h3>
+        <a class="link">Click here to order more</a>
+    </section>
+</body>
+<script>
+</script>
+<style>
+    body {
+        font-family: 'Montserrat';
+        color: rgb(90, 70, 33);
+        background-color: rgb(255, 241, 214);
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+        border-bottom: 1px solid orange;
+        margin-bottom: 3rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+    .order__total{
+        font-weight: bold;
+        font-size: 1 rem;
+    }
+    .order__header{
+        text-decoration: underline;
+    }
+    .order {
+        margin-bottom: 4rem;
+    }
+</style>
+
+</html>
