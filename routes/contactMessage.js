@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
     const { body } = req.body
     req.body.date = `${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}`
 
-    if (!req.body.name || req.body.name === '' || !req.body.email || req.body.email === '') {
+    if (!req.body.name || req.body.name === '' || !req.body.email || req.body.email.replace(/\s+/g, '') === '' === '') {
         return res.status(400).send('Cannot send message, please provide your name and email')
     }
     //test email
@@ -64,7 +64,7 @@ router.post('/', async (req, res) => {
     sendMail(`test: ${req.body.name} Sent a message`, message, `cruncheemunchies@gmail.com`)
     .then(result => {
         res.status(200).send('message sent')
-        let customMessage = `Thanks ${req.body.name} for contacting us. We will get back to you regarding any questions or concerns you may have! have a great day!`
+        let customMessage = `Thank you ${req.body.name} for contacting us. We will get back to you regarding any questions or concerns you may have! have a great day!`
 
         //send mail to potential customer
         sendMail('Thanks for contacting Crunchee Munchies', customMessage, req.body.email).then(result=>{
