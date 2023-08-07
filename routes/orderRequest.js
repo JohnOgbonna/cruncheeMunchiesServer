@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
     res.status(400).send('Please enter a valid email address');
   }
 
-  if (req.body.needsDelivery && !(req.body.address.country && req.body.address.country && req.body.address.country)) {
+  if (req.body.needsDelivery && !(req.body.addressFields.country && req.body.addressFields.country && req.body.addressFields.country)) {
     return res.status(400).send('Could not send order request, Address not Complete')
   }
 
@@ -62,7 +62,7 @@ router.post('/', async (req, res) => {
   }
   let subject = `test: \n ${req.body.fullName} requested an order on crunchee munchies.com!`
 
-  sendMail(subject, `cruncheemunchies@gmail.com, ${req.body.email}`, customerMessage(req.body.date, req.body.type, req.body.order, req.body.firstName, req.body.message), '')
+  sendMail(subject, `cruncheemunchies@gmail.com, ${req.body.email}`, customerMessage(req.body.date, req.body.type, req.body.order, req.body.firstName, req.body.message, req.body.needsDelivery, req.body.addressFields), '')
     .then(result => {
       console.log('Email sent', result)
       res.status(200).send('Your message has been sent!')

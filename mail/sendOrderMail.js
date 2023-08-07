@@ -1,5 +1,5 @@
 
-const customerMessage = (date, type, order, name, message) => {
+const customerMessage = (date, type, order, name, message, needsDelivery, addresses) => {
     let orderTotal = 0
     Object.keys(order).forEach(Order => {
         orderObj = order[Order]
@@ -42,7 +42,7 @@ padding: 1rem;">
     <section class="header">
         <h1 class="header__logo" style = "font-size: 1.6rem;
         border-bottom: 1px solid orange;
-        margin-bottom: 3rem;">New Order Request| Crunchee Munchies</h1>
+        margin-bottom: 3rem;">New Order Request  |  Crunchee Munchies</h1>
         <h2>${type === 'customOrder' ? 'Event/Party Order' : 'Standard Order'}</h2>
     </section>
     <section class="message">
@@ -65,9 +65,21 @@ padding: 1rem;">
         <h4 class="notes__header" style = "margin-bottom: .3rem">Notes:</h4>
         <p class="notes__message" "margin-top: 0">${message && message != ''? message : ''}</p>
     </section>
+    <section class="address">
+    <h4 class="address__header">Address:</h4>
+        <p class="address__message">${
+            needsDelivery ? 
+            addresses.address + ', ' +addresses.city + ', ' + addresses.region + ', ' + addresses.country:
+            'Pickup Order'
+        }</p>
+    </section>
     <section class="footer">
-        <h3 class="footer__header">Thank you for ordering form Crunchee Munchies</h3>
+        <h3 class="footer__header">Thank you for ordering from Crunchee Munchies</h3>
         <p>You can submit payment via e-transfer to ogbonna@shaw.ca or pay cash during pickup</p>
+        ${
+            type === 'customOrder' ? 
+            '<p>If you selected the option for a custom label, we will reach out regarding label design. Feel free to send us pictures you want to use for the label and label design ideas by including them in a response to this email</p>' : ''
+        }
         <a class="link" href = '/'>Click here to order more</a>
     </section>
 </body>
