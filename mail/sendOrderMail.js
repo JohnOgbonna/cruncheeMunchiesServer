@@ -20,25 +20,31 @@ const customerMessage = (date, type, order, name, message, needsDelivery, addres
         })
         return returnString
     }
+    const dateOptions = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        weekday: 'long',
+      };
 
     return (
-        `
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
-</head>
+    `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+    </head>
 
-<body style = "font-family: Helvetica, Sans-Serif;
-color: rgb(90, 70, 33);
-background-color: rgb(255, 241, 214);
-padding: 1rem;">
+    <body style = "font-family: Helvetica, Sans-Serif;
+    color: rgb(90, 70, 33);
+    background-color: rgb(255, 241, 214);
+    padding: 1rem;">
     <section class="header">
         <h1 class="header__logo" style = "font-size: 1.6rem;
         border-bottom: 1px solid orange;
@@ -52,7 +58,7 @@ padding: 1rem;">
     <section class="order" style = "margin-bottom: 1rem;">
         <h3 class="order__header">Your order:</h3>
         <div class="order__box">
-            <h4 class="order__box-header" style = "margin-bottom: .3rem">On ${date}, you ordered:</h4>
+            <h4 class="order__box-header" style = "margin-bottom: .3rem">On ${date.toLocaleDateString('en-US', dateOptions)}, you ordered:</h4>
             <ul class="order__box-orders">
                ${customerOrder(order)
         }
