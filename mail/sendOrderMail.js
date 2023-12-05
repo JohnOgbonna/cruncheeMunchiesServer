@@ -20,12 +20,6 @@ const customerMessage = (date, type, order, name, message, needsDelivery, addres
         })
         return returnString
     }
-    const dateOptions = {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        weekday: 'long',
-      };
 
     return (
     `
@@ -58,7 +52,7 @@ const customerMessage = (date, type, order, name, message, needsDelivery, addres
     <section class="order" style = "margin-bottom: 1rem;">
         <h3 class="order__header">Your order:</h3>
         <div class="order__box">
-            <h4 class="order__box-header" style = "margin-bottom: .3rem">On ${date.toLocaleDateString('en-US', dateOptions)}, you ordered:</h4>
+            <h4 class="order__box-header" style = "margin-bottom: .3rem">On ${date}, you ordered:</h4>
             <ul class="order__box-orders">
                ${customerOrder(order)
         }

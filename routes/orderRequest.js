@@ -60,7 +60,7 @@ router.post('/', async (req, res) => {
       return res.status(400).send('Could not send message, please try again later')
     }
   }
-  let subject = `test: \n ${req.body.fullName} requested an order on crunchee munchies.com!`
+  let subject = `${req.body.fullName} requested an online order from crunchee munchies`
 
   sendMail(subject, `cruncheemunchies@gmail.com, ${req.body.email}`, customerMessage(req.body.date, req.body.type, req.body.order, req.body.firstName, req.body.message, req.body.needsDelivery, req.body.addressFields), '')
     .then(result => {
